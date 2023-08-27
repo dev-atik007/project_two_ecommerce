@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Website\WebsiteController;
 use App\Http\Controllers\Admin\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +17,7 @@ use App\Http\Controllers\Admin\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WebsiteController::class, 'home']);
 
 Route::middleware([
     'auth:sanctum',
@@ -30,3 +30,4 @@ Route::middleware([
 });
 
 Route::get('/redirect',[HomeController::class, 'redirect']);
+
