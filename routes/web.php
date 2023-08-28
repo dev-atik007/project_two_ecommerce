@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Website\WebsiteController;
 use App\Http\Controllers\Admin\HomeController;
-
+use App\Http\Controllers\Admin\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +36,11 @@ Route::get('/redirect',[HomeController::class, 'redirect']);
 
 // Category Routes
 Route::get('/view_category', [CategoryController::class, 'view_category'])->name('view.category');
-Route::post('/add_catetory', [CategoryController::class, 'add_category'])->name('add.category');
+Route::post('/add/catetory', [CategoryController::class, 'add_category'])->name('add.category');
 Route::get('/category/delete/{id}', [CategoryController::class, 'delete_category'])->name('delete.category');
-     
+
+// Product Routes
+Route::get('/view_product', [ProductController::class, 'view_product'])->name('view.product');
+Route::post('/add/product', [ProductController::class, 'add_product'])->name('add.product');
 
 
