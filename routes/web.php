@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Website\WebsiteController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\Admin\HomeController;
 |
 */
 
+// Webite
 Route::get('/', [WebsiteController::class, 'home']);
 
 Route::middleware([
@@ -29,5 +31,11 @@ Route::middleware([
     })->name('dashboard');
 });
 
+// Admin Panel
 Route::get('/redirect',[HomeController::class, 'redirect']);
+
+// Category Routes
+Route::get('/view_category', [CategoryController::class, 'view_category'])->name('view.category');
+Route::post('/add_catetory', [CategoryController::class, 'add_category'])->name('add.category');
+
 
