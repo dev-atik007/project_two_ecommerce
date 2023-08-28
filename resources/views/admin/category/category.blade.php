@@ -19,6 +19,14 @@
             {
                 color: black;
             }
+            .center
+            {
+                margin: auto;
+                width: 50%;
+                text-align: center;
+                margin-top: 40px;
+                border: 3px solid white;
+            }
      </style>
 
   </head>
@@ -34,8 +42,8 @@
 
                 @if(session()->has('message'))
 
-                    <button type="button" class="close" data-dissmiss="alert" aria-hidden="true">X</button>
                     <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
                         {{ session()->get('message') }}
                     </div>
 
@@ -53,6 +61,26 @@
 
                     </form>
                 </div>
+
+                <table class="center">
+                    <tr>
+                        <td>ID</td>
+                        <td>Category Name</td>
+                        <td>Action</td>
+                    </tr>
+
+                    @foreach ($data as $key=>$category)
+                    <tr>
+                        <th scope="row">{{ $key+1 }}</th>
+                        <td>{{ $category->category_name }}</td>
+        
+                        <td>
+                            <a onclick="return confirm('Are You Sure To Delete This')" class="btn btn-danger" href="{{ route('delete.category', $category->id) }}">Delete</a>
+                        </td>
+                    </tr>
+                    @endforeach
+
+                </table>
 
             </div>  
         </div>

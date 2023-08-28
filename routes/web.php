@@ -37,5 +37,7 @@ Route::get('/redirect',[HomeController::class, 'redirect']);
 // Category Routes
 Route::get('/view_category', [CategoryController::class, 'view_category'])->name('view.category');
 Route::post('/add_catetory', [CategoryController::class, 'add_category'])->name('add.category');
+Route::get('/category/delete/{id}', [CategoryController::class, 'delete_category'])->name('delete.category');
+     
 
 
