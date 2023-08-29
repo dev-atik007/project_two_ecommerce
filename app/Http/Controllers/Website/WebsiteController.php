@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Website;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -19,4 +20,6 @@ class WebsiteController extends Controller
         $product=Product::find($id);
         return view('website.website.product_details', compact('product'));
     }
+
+    
 }

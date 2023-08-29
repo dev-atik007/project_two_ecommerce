@@ -7,7 +7,6 @@
             </div>
             <div class="row">
                @foreach ($product as $products)
-               
             
                   <div class="col-sm-6 col-md-4 col-lg-4">
                      <div class="box">
@@ -16,9 +15,18 @@
                               <a href="{{ route('product.details', $products->id) }}" class="option1">
                               Product Details
                               </a>
-                              <a href="" class="option2">
-                              Buy Now
-                              </a>
+                              <form action="{{ route('add.cart', $products->id) }}" method="post">
+                                 @csrf
+
+                                 <div class="row">
+                                    <div class="col-md-4">
+                                       <input type="number" name="qty" value="1" min="1" style="width: 100px">
+                                    </div>
+                                    <div class="col-md-4">
+                                       <input type="submit" value="Add To Cart">
+                                    </div>
+                                 </div>
+                              </form>
                            </div>
                         </div>
                         <div class="img-box">

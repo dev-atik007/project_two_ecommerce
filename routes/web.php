@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Website\WebsiteController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Website\CartController;
 use App\Models\Product;
 
 /*
@@ -23,6 +24,7 @@ use App\Models\Product;
 Route::get('/', [WebsiteController::class, 'home']);
 
 Route::get('/product/details/{id}', [WebsiteController::class, 'product_details'])->name('product.details');
+Route::post('/product/add-cart/{id}', [CartController::class, 'addCart'])->name('add.cart');
 
 
 Route::middleware([
