@@ -71,7 +71,7 @@
                     </div>
                     <div class="div_design">
                         <label>Discount Price :</label>
-                        <input class="text_color" type="number" name="dis_price" value="{{ $product->discount_price }}" required>
+                        <input class="text_color" type="number" name="dis_price" value="{{ $product->discount_price }}">
                     </div>
                     <div class="div_design">
                         <label>Product Qty :</label>
