@@ -22,6 +22,9 @@ use App\Models\Product;
 // Webite
 Route::get('/', [WebsiteController::class, 'home']);
 
+Route::get('/product/details/{id}', [WebsiteController::class, 'product_details'])->name('product.details');
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -31,6 +34,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
 
 // Admin Panel
 Route::get('/redirect',[HomeController::class, 'redirect']);

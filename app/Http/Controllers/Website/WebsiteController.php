@@ -13,4 +13,10 @@ class WebsiteController extends Controller
         $product=Product::paginate(6);
         return view('website.home', compact('product'));
     }
+
+    public function product_details($id)
+    {
+        $product=Product::find($id);
+        return view('website.website.product_details', compact('product'));
+    }
 }
