@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Website\WebsiteController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,5 +43,9 @@ Route::get('/category/delete/{id}', [CategoryController::class, 'delete_category
 // Product Routes
 Route::get('/view_product', [ProductController::class, 'view_product'])->name('view.product');
 Route::post('/add/product', [ProductController::class, 'add_product'])->name('add.product');
+Route::get('/show_product', [ProductController::class, 'show_product'])->name('show.product');
+Route::get('/product/edit/{id}', [ProductController::class, 'edit_product'])->name('product.edit');
+Route::post('/product/update/{id}', [ProductController::class, 'update_product'])->name('product.update');
+Route::get('/product/delete/{id}', [ProductController::class, 'delete_product'])->name('product.delete');
 
 
