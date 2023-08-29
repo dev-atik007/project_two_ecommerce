@@ -48,4 +48,9 @@ class CartController extends Controller
             return redirect('login');
         }
     }
+
+    public function showCart()
+    {
+        
+    }
 }
