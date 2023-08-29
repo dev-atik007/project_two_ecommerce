@@ -52,5 +52,19 @@ class CartController extends Controller
     public function showCart()
     {
         
+
+        if(Auth::id())
+        {
+            $id=Auth::user()->id;
+
+            $cart=Cart::where('user_id','=',$id)->get();
+            return view('website.cart.showCart', compact('cart'));
+        }
+        else
+        {
+            return redirect('login');
+        }
+
+        
     }
 }
