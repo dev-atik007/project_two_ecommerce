@@ -23,7 +23,7 @@
                 .center
                 {
                     margin: auto;
-                    width: 50%;
+                    width: 70%;
                     text-align: center;
                     padding: 30px;
                 }
@@ -71,9 +71,12 @@
                         <tr>
                                 <td>{{ $cart->product_title }}</td>
                                 <td>{{ $cart->quantity }}</td>
-                                <td>{{ $cart->price }}</td>
+                                <td>${{ $cart->price }}</td>
                                 <td><img class="img_deg" src="/product/{{ $cart->image  }}"></td>
-                                <td>remove</td>
+                                <td>
+                                    <a class="btn btn-danger" onclick="return confirm('Are you sure to remove this Product ?')"
+                                     href="{{ route('remove.cart', $cart->id) }}">Remove Product</a>
+                                </td>
                         </tr>
 
                         <?php $totalprice=$totalprice + $cart->price; ?>
@@ -84,7 +87,7 @@
 
                 </table>
                 <div class="total_deg">
-                    <h1>Total Price : {{ $totalprice }}</h1>
+                    <h1>Total Price : ${{ $totalprice }}</h1>
                 </div>
 
 

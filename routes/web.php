@@ -24,9 +24,11 @@ use App\Models\Product;
 Route::get('/', [WebsiteController::class, 'home']);
 
 Route::get('/product/details/{id}', [WebsiteController::class, 'product_details'])->name('product.details');
+
 // Cart Routes
 Route::post('/product/add-cart/{id}', [CartController::class, 'addCart'])->name('add.cart');
 Route::get('/show/cart', [CartController::class, 'showCart'])->name('show.cart');
+Route::get('/cart/remove/{id}', [CartController::class, 'removeCart'])->name('remove.cart');
 
 
 Route::middleware([

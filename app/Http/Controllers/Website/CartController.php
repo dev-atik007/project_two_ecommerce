@@ -67,4 +67,13 @@ class CartController extends Controller
 
         
     }
+
+    public function removeCart($id)
+    {
+        $cart=Cart::find($id);
+
+        $cart->delete();
+        return redirect()->back();
+
+    }
 }
