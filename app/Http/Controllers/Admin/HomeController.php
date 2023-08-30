@@ -29,6 +29,17 @@ class HomeController extends Controller
         $order=Order::all();
         return view('admin.orderShow', compact('order'));
     }
+    public function devivered($id)
+    {
+        $order=Order::find($id);
+        $order->delivery_status="Delivered";
+        $order->payment_status='Paid';
+        $order->save();
+
+        return redirect()->back();
+
+        
+    }
 
     
 }

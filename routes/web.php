@@ -71,6 +71,7 @@ Route::get('/product/delete/{id}', [ProductController::class, 'delete_product'])
 
 // Order list table
 Route::get('/order/list', [HomeController::class, 'order'])->name('order');
+Route::get('/delivered/{id}', [HomeController::class, 'devivered'])->name('delivered');
 
 
 
