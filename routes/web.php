@@ -69,7 +69,9 @@ Route::get('/product/edit/{id}', [ProductController::class, 'edit_product'])->na
 Route::post('/product/update/{id}', [ProductController::class, 'update_product'])->name('product.update');
 Route::get('/product/delete/{id}', [ProductController::class, 'delete_product'])->name('product.delete');
 
-// Order Routes
+// Order list table
+Route::get('/order/list', [HomeController::class, 'order'])->name('order');
+
 
 
 
