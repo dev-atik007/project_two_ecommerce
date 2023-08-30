@@ -1,12 +1,15 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Website\WebsiteController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+
+use App\Http\Controllers\Website\WebsiteController;
+
 use App\Http\Controllers\Website\CartController;
+use App\Http\Controllers\Website\OrderController;
 use App\Models\Product;
 
 /*
@@ -29,6 +32,9 @@ Route::get('/product/details/{id}', [WebsiteController::class, 'product_details'
 Route::post('/product/add-cart/{id}', [CartController::class, 'addCart'])->name('add.cart');
 Route::get('/show/cart', [CartController::class, 'showCart'])->name('show.cart');
 Route::get('/cart/remove/{id}', [CartController::class, 'removeCart'])->name('remove.cart');
+
+// Order Routes
+Route::get('/cash/order', [OrderController::class, 'cashOrder'])->name('cash.order');
 
 
 Route::middleware([
@@ -57,5 +63,8 @@ Route::get('/show_product', [ProductController::class, 'show_product'])->name('s
 Route::get('/product/edit/{id}', [ProductController::class, 'edit_product'])->name('product.edit');
 Route::post('/product/update/{id}', [ProductController::class, 'update_product'])->name('product.update');
 Route::get('/product/delete/{id}', [ProductController::class, 'delete_product'])->name('product.delete');
+
+// Order Routes
+
 
 

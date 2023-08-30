@@ -50,9 +50,19 @@
       </style>
    </head>
    <body>
-      <div class="hero_area">
+        <div class="hero_area">
          <!-- header section strats -->
           @include('website.partials.header')
+
+
+          <!-- order comfirm message -->
+            @if (session()->has('message'))
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">x</button>
+                    {{ session()->get('message') }}
+                </div>
+            @endif
         
 
         <div class="center">
@@ -83,16 +93,24 @@
 
                         @endforeach
 
-                        
-
                 </table>
                 <div class="total_deg">
                     <h1>Total Price : ${{ $totalprice }}</h1>
                 </div>
 
 
-        </div>
+                <div>
 
+                    <h1 style="font-size: 25px; padding-botton: 15px">Proceed to Order</h1>
+                    <a href="{{ route('cash.order') }}" class="btn btn-danger">Cash on Delivery</a>
+                    <a href="" class="btn btn-danger">Pay using Card</a>
+                </div>
+
+
+
+
+
+        </div>
 
       <div class="cpy_">
          <p class="mx-auto">© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a><br>
