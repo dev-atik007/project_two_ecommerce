@@ -60,6 +60,7 @@
                         <th style="padding: 10px;">Image</th>
                         <th style="padding: 10px;">Delivired</th>
                         <th style="padding: 10px;">Print PDF</th>
+                        <th style="padding: 10px;">Sent Email</th>
                      
                 </tr>
 
@@ -88,6 +89,9 @@
                         </td>
                         <td>
                             <a href="{{ route('print.pdf',$order->id) }}" class="btn btn-secondary">Print PDF</a>
+                        </td>
+                        <td>
+                            <a href="{{ route('sent.email',$order->id) }}" class="btn btn-info">Sent Email</a>
                         </td>
                     </div>
                 </tr>

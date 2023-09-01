@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PdfController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\StripePaymentController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\Website\WebsiteController;
 
 use App\Http\Controllers\Website\CartController;
@@ -28,6 +29,7 @@ use Illuminate\Support\Facades\Auth;
 // Webite
 Route::get('/', [WebsiteController::class, 'home']);
 
+// Product Details Route
 Route::get('/product/details/{id}', [WebsiteController::class, 'product_details'])->name('product.details');
 
 // Cart Routes
@@ -41,6 +43,9 @@ Route::get('/cash/order', [OrderController::class, 'cashOrder'])->name('cash.ord
 // Payment Route
 Route::get('/stripe/{totalprice}', [StripePaymentController::class, 'stripe'])->name('stripe');
 Route::post('/stripe/{totalprice}', [StripePaymentController::class, 'stripePost'])->name('stripe.post');
+
+// Sent email Routes
+Route::get('/sent/email/{id}', [EmailController::class, 'sentEmail'])->name('sent.email');
 
 
 
