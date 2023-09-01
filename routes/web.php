@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PdfController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\StripePaymentController;
 use App\Http\Controllers\Website\WebsiteController;
@@ -73,6 +74,9 @@ Route::get('/product/delete/{id}', [ProductController::class, 'delete_product'])
 Route::get('/order/list', [HomeController::class, 'order'])->name('order');
 Route::get('/delivered/{id}', [HomeController::class, 'devivered'])->name('delivered');
 
+Route::get('/print/pdf/{id}',[PdfController::class, 'printPdf'])->name('print.pdf');
 
 
 
+
+?>

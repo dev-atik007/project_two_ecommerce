@@ -47,18 +47,19 @@
 
         <table class="table_deg">
                 <tr class="th_dg">
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Address</th>
-                        <th>Phone</th>
-                        <th>Product title</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Payment Status</th>
-                        <th>Delivery status</th>
-                        <th>Image</th>
-                        <th>Delivired</th>
+                        <th style="padding: 10px;">ID</th>
+                        <th style="padding: 10px;">Name</th>
+                        <th style="padding: 10px;">Email</th>
+                        <th style="padding: 10px;">Address</th>
+                        <th style="padding: 10px;">Phone</th>
+                        <th style="padding: 10px;">Product title</th>
+                        <th style="padding: 10px;">Quantity</th>
+                        <th style="padding: 10px;">Price</th>
+                        <th style="padding: 10px;">Payment Status</th>
+                        <th style="padding: 10px;">Delivery status</th>
+                        <th style="padding: 10px;">Image</th>
+                        <th style="padding: 10px;">Delivired</th>
+                        <th style="padding: 10px;">Print PDF</th>
                      
                 </tr>
 
@@ -84,6 +85,9 @@
                                 @else
                                     <p style="color: green;">Delivered</p>
                             @endif 
+                        </td>
+                        <td>
+                            <a href="{{ route('print.pdf',$order->id) }}" class="btn btn-secondary">Print PDF</a>
                         </td>
                     </div>
                 </tr>
