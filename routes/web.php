@@ -12,6 +12,7 @@ use App\Http\Controllers\Website\WebsiteController;
 use App\Http\Controllers\Website\CartController;
 use App\Http\Controllers\Website\OrderController;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,19 +44,14 @@ Route::post('/stripe/{totalprice}', [StripePaymentController::class, 'stripePost
 
 
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
+Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+        return view('dashboard');})->name('dashboard');
 });
 
 
 // Admin Panel
-Route::get('/redirect',[HomeController::class, 'redirect']);
+Route::get('/redirect',[HomeController::class, 'redirect'])->middleware('auth','verified');
 
 // Category Routes
 Route::get('/view_category', [CategoryController::class, 'view_category'])->name('view.category');
@@ -74,6 +70,7 @@ Route::get('/product/delete/{id}', [ProductController::class, 'delete_product'])
 Route::get('/order/list', [HomeController::class, 'order'])->name('order');
 Route::get('/delivered/{id}', [HomeController::class, 'devivered'])->name('delivered');
 
+// product print pdf
 Route::get('/print/pdf/{id}',[PdfController::class, 'printPdf'])->name('print.pdf');
 
 
