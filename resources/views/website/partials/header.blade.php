@@ -29,6 +29,9 @@
                         <li class="nav-item">
                            <a class="nav-link" href="{{ route('show.cart') }}">Cart</a>
                         </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="{{ route('show.order') }}">Order</a>
+                        </li>
                         <form class="form-inline">
                            <button class="btn  my-2 my-sm-0 nav_search-btn" id="searchcss" type="submit">
                            <i class="fa fa-search" aria-hidden="true"></i>

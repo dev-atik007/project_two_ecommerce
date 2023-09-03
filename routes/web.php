@@ -12,6 +12,7 @@ use App\Http\Controllers\Website\WebsiteController;
 
 use App\Http\Controllers\Website\CartController;
 use App\Http\Controllers\Website\OrderController;
+use App\Http\Controllers\Website\ShowCancelController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,6 +37,10 @@ Route::get('/product/details/{id}', [WebsiteController::class, 'product_details'
 Route::post('/product/add-cart/{id}', [CartController::class, 'addCart'])->name('add.cart');
 Route::get('/show/cart', [CartController::class, 'showCart'])->name('show.cart');
 Route::get('/cart/remove/{id}', [CartController::class, 'removeCart'])->name('remove.cart');
+
+// Order and Cancel Route
+Route::get('/show-order',[ShowCancelController::class, 'showOrder'])->name('show.order');
+Route::get('/cancel-order/{id}', [ShowCancelController::class, 'cancelOrder'])->name('cancel.order');
 
 // Order Routes
 Route::get('/cash/order', [OrderController::class, 'cashOrder'])->name('cash.order');
