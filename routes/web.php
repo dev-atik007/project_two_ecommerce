@@ -46,6 +46,7 @@ Route::post('/stripe/{totalprice}', [StripePaymentController::class, 'stripePost
 
 // Sent email Routes
 Route::get('/sent/email/{id}', [EmailController::class, 'sentEmail'])->name('sent.email');
+Route::post('send-user-email/{id}', [EmailController::class, 'sentUserEmail'])->name('sendUser.email');
 
 
 

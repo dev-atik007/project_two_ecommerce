@@ -30,30 +30,31 @@
 
         <h1 style="text-align: center; font-size: 25px">Sent Email to {{ $order->email }}</h1>
 
-        <form>
+        <form action="{{ route('sendUser.email', $order->id) }}" method="POST">
+            @csrf
         <div>
             <label style="padding-left: 35%; padding-top: 30px">Email Greeting :</label>
-            <input type="text" name="greeting">
+            <input style="color:black;" type="text" name="greeting">
         </div>
         <div>
             <label style="padding-left: 35%; padding-top: 30px">Email First Line :</label>
-            <input type="text" name="firstline">
+            <input style="color:black;" type="text" name="firstline">
         </div>
         <div>
             <label style="padding-left: 35%; padding-top: 30px">Email Body :</label>
-            <input type="text" name="body">
+            <input style="color:black;" type="text" name="body">
         </div>
         <div>
             <label style="padding-left: 35%; padding-top: 30px">Email Button Name :</label>
-            <input type="text" name="button">
+            <input style="color:black;" type="text" name="button">
         </div>
         <div>
             <label style="padding-left: 35%; padding-top: 30px">Email Url :</label>
-            <input type="text" name="url">
+            <input style="color:black;" type="text" name="url">
         </div>
         <div>
             <label style="padding-left: 35%; padding-top: 30px">Email Last Line :</label>
-            <input type="text" name="last">
+            <input style="color:black;" type="text" name="lastline">
         </div>
         <div style="padding-left: 55%; padding-top: 35px">
             <input type="submit" value="Sent Email" class="btn btn-primary">

@@ -44,7 +44,7 @@
             <div class="content-wrapper">
         <!-- partial -->
         <h1 class="title_dug">All Orders</h1>
-
+        
         <table class="table_deg">
                 <tr class="th_dg">
                         <th style="padding: 10px;">ID</th>
@@ -73,7 +73,7 @@
                     <td>{{ $order->phone }}</td>
                     <td>{{ $order->product_title }}</td>
                     <td>{{ $order->qty }}</td>
-                    <td>{{ $order->price }}</td>
+                    <td>{{ $order->price }}</td>`       
                     <td>{{ $order->payment_status }}</td>
                     <td>{{ $order->delivery_status }}</td>
                     <td>

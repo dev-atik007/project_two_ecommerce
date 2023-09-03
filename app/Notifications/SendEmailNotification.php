@@ -12,6 +12,7 @@ class SendEmailNotification extends Notification
     use Queueable;
 
     private $details;
+    
 
     /**
      * Create a new notification instance.
@@ -41,7 +42,7 @@ class SendEmailNotification extends Notification
                     ->line($this->details['firstline'])
                     ->line($this->details['body'])
                     ->action($this->details['button'], $this->details['url'])
-                    ->line('Thank you for using our application!');
+                    ->line($this->details['lastline']);
     }
 
     /**
