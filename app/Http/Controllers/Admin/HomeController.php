@@ -31,6 +31,7 @@ class HomeController extends Controller
         $order=Order::all();
         return view('admin.orderShow', compact('order'));
     }
+
     public function devivered($id)
     {
         $order=Order::find($id);
@@ -40,8 +41,16 @@ class HomeController extends Controller
 
         return redirect()->back();
 
-        
     }
+
+    public function searchData(Request $request)
+    {
+        $searchText=$request->search;
+        $order=order::where('name','LIKE',"%searchText%")->orWhere('phone','LIKE',"%searchText%" );
+
+        return view('admin.orderShow', compact('order'));
+    }
+
 
     
 }

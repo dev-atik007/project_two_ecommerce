@@ -45,6 +45,16 @@
         <!-- partial -->
         <h1 class="title_dug">All Orders</h1>
         
+
+        <div style="padding-left: 400px; padding-bottom: 30px;" >
+
+            <form action="{{ route('search.product') }}" method="get">
+               @csrf
+
+                <input type="text" style="color: black;" name="search" placeholder="Search For Something">
+                <input type="submit" value="Search" class="btn btn-outline-primary">
+            </form>
+        </div>
         <table class="table_deg">
                 <tr class="th_dg">
                         <th style="padding: 10px;">ID</th>
@@ -61,10 +71,10 @@
                         <th style="padding: 10px;">Delivired</th>
                         <th style="padding: 10px;">Print PDF</th>
                         <th style="padding: 10px;">Sent Email</th>
-                     
+                        
                 </tr>
 
-                @foreach ($order as $key=>$order)
+                @forelse ($order as $key=>$order)
                 <tr>
                     <th>{{ $key+1 }}</th>
                     <td>{{ $order->name }}</td>
@@ -73,7 +83,7 @@
                     <td>{{ $order->phone }}</td>
                     <td>{{ $order->product_title }}</td>
                     <td>{{ $order->qty }}</td>
-                    <td>{{ $order->price }}</td>`       
+                    <td>{{ $order->price }}</td>       
                     <td>{{ $order->payment_status }}</td>
                     <td>{{ $order->delivery_status }}</td>
                     <td>
@@ -95,18 +105,18 @@
                         </td>
                     </div>
                 </tr>
-                @endforeach
+                @empty
+                <div>No Data Fount</div>
+                @endforelse
         </table>
           
         <!-- main-panel ends -->
       </div>
       <!-- page-body-wrapper ends -->
     </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
 
       @include('admin.partials.script')
 
-    <!-- End custom js for this page -->
+   
   </body>
 </html>

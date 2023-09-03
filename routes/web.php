@@ -79,6 +79,9 @@ Route::get('/delivered/{id}', [HomeController::class, 'devivered'])->name('deliv
 // product print pdf
 Route::get('/print/pdf/{id}',[PdfController::class, 'printPdf'])->name('print.pdf');
 
+// admin product search
+Route::get('/search', [HomeController::class, 'searchData'])->name('search.product');
+
 
 
 
