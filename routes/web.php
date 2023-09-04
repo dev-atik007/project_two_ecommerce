@@ -11,6 +11,7 @@ use App\Http\Controllers\EmailController;
 use App\Http\Controllers\Website\WebsiteController;
 
 use App\Http\Controllers\Website\CartController;
+use App\Http\Controllers\Website\CommentReplyController;
 use App\Http\Controllers\Website\OrderController;
 use App\Http\Controllers\Website\ShowCancelController;
 use App\Models\Product;
@@ -52,6 +53,9 @@ Route::post('/stripe/{totalprice}', [StripePaymentController::class, 'stripePost
 // Sent email Routes
 Route::get('/sent/email/{id}', [EmailController::class, 'sentEmail'])->name('sent.email');
 Route::post('send-user-email/{id}', [EmailController::class, 'sentUserEmail'])->name('sendUser.email');
+
+Route::post('/add-comment', [CommentReplyController::class, 'addComment'])->name('add.comment');
+Route::post('/add-reply', [CommentReplyController::class, 'addReply'])->name('add.reply');
 
 
 

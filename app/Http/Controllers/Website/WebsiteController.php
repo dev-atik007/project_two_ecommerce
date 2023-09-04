@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Website;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Product;
+use App\Models\Reply;
 use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
@@ -12,7 +14,9 @@ class WebsiteController extends Controller
     public function home()
     {
         $product=Product::paginate(6);
-        return view('website.home', compact('product'));
+        $comment=Comment::orderby('id','desc')->get();
+        $reply=Reply::all();
+        return view('website.home', compact('product','comment','reply'));
     }
 
     public function product_details($id)

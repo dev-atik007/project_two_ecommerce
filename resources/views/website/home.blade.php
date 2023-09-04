@@ -20,6 +20,8 @@
       <link href="home/css/style.css" rel="stylesheet" />
       <!-- responsive style -->
       <link href="home/css/responsive.css" rel="stylesheet" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+             integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
    </head>
    <body>
       <div class="hero_area">
@@ -53,6 +55,68 @@
 
       <!-- end product section -->
 
+      <!-- comment and reply system start-->
+
+      <div style="text-align: center; padding-bottom: 30px">
+         <h1 style="text-align:center; font-size: 30px; padding-top: 20px; padding-bottom:20px">Comments</h1>
+
+         <form action="{{ route('add.comment') }}" method="POST">
+            @csrf
+
+            <textarea style="height: 150px; width: 600px" name="comment"  placeholder="Comment something here"></textarea>
+            <br>
+            <input type="submit" class="btn btn-primary" value="Comment">
+         </form>
+      </div>
+      <div style="padding-left: 20%;">
+         <h1 style="font-size: 20px; padding-bottom: 20px">All comments</h1>
+
+         @foreach ($comment as $comment)
+         <div>
+            <b>{{ $comment->name }}</b>
+            <p>{{ $comment->comment }}</p>
+            <a style="color: blue;" href="javascript::void(0);" onclick="reply(this)" data-Commentid="{{ $comment->id }}">Reply</a>
+
+            <!-- reply elements loop -->
+            @foreach ($reply as $rep)
+
+            @if ($rep->comment_id==$comment->id)
+            <div style="padding-left: 3%; padding-bottom: 10px">
+               <b>{{ $rep->name }}</b>
+               <p>{{ $rep->reply }}</p>
+               <a style="color: blue;" href="javascript::void(0);" onclick="reply(this)" data-Commentid="{{ $comment->id }}">Reply</a>
+            </div>
+            @endif
+
+            
+            @endforeach
+            
+
+         </div>
+         @endforeach
+
+         <!-- Reply textbox -->
+
+         <div style="display: none;" class="replyDiv">
+
+            <form action="{{ route('add.reply') }}" method="POST">
+               @csrf
+
+               <input type="text" id="commentId" name="commentId" hidden>
+               <textarea style="height: 70px; width: 500px" name="reply" placeholder="white something here"></textarea>
+               <br>
+               <button type="submit" class="btn btn-warning">Reply</button>
+
+               <a class="btn" href="" onclick="reply_close(this)">Close</a>
+
+            </form>
+         </div>      
+      </div>
+
+      <!-- comment and reply system end-->
+
+
+
       <!-- subscribe section -->
 
           @include('website.partials.subscribe')
@@ -62,10 +126,10 @@
 
           @include('website.partials.client')
 
-      <!-- end client section -->
-      <!-- footer start -->
+     
       @include('website.partials.footer')
       <!-- footer end -->
+
       <div class="cpy_">
          <p class="mx-auto">© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a><br>
          
@@ -73,6 +137,33 @@
          
          </p>
       </div>
+
+      <script type="text/javascript">
+            function reply(caller)
+            {
+               document.getElementById('commentId').value=$(caller).attr('data-Commentid');
+               $('.replyDiv').insertAfter($(caller));
+               $('.replyDiv').show();
+            }
+            function reply_close(caller)
+            {
+              
+               $('.replyDiv').hide();
+            }     
+      </script>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function(event) { 
+            var scrollpos = localStorage.getItem('scrollpos');
+            if (scrollpos) window.scrollTo(0, scrollpos);
+        });
+
+        window.onbeforeunload = function(e) {
+            localStorage.setItem('scrollpos', window.scrollY);
+        };
+      </script>
+
+
       <!-- jQery -->
       <script src="home/js/jquery-3.4.1.min.js"></script>
       <!-- popper js -->
