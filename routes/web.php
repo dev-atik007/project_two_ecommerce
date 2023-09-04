@@ -54,8 +54,11 @@ Route::post('/stripe/{totalprice}', [StripePaymentController::class, 'stripePost
 Route::get('/sent/email/{id}', [EmailController::class, 'sentEmail'])->name('sent.email');
 Route::post('send-user-email/{id}', [EmailController::class, 'sentUserEmail'])->name('sendUser.email');
 
+// comment and reply route
 Route::post('/add-comment', [CommentReplyController::class, 'addComment'])->name('add.comment');
 Route::post('/add-reply', [CommentReplyController::class, 'addReply'])->name('add.reply');
+
+Route::get('/product-search', [WebsiteController::class, 'productSearch'])->name('product.search');
 
 
 
