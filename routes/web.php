@@ -34,10 +34,13 @@ Route::get('/', [WebsiteController::class, 'home']);
 // Product Details Route
 Route::get('/product/details/{id}', [WebsiteController::class, 'product_details'])->name('product.details');
 
-// Cart Routes
+// Cart Routes 
 Route::post('/product/add-cart/{id}', [CartController::class, 'addCart'])->name('add.cart');
 Route::get('/show/cart', [CartController::class, 'showCart'])->name('show.cart');
 Route::get('/cart/remove/{id}', [CartController::class, 'removeCart'])->name('remove.cart');
+
+// header product
+Route::get('/all-products', [CartController::class, 'product'])->name('product');
 
 // Order and Cancel Route
 Route::get('/show-order',[ShowCancelController::class, 'showOrder'])->name('show.order');
@@ -59,6 +62,9 @@ Route::post('/add-comment', [CommentReplyController::class, 'addComment'])->name
 Route::post('/add-reply', [CommentReplyController::class, 'addReply'])->name('add.reply');
 
 Route::get('/product-search', [WebsiteController::class, 'productSearch'])->name('product.search');
+
+// header product/ and product search
+Route::get('/search-product', [WebsiteController::class, 'searchProduct'])->name('search_product');
 
 
 

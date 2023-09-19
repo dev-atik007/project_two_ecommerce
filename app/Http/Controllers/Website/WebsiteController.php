@@ -35,5 +35,20 @@ class WebsiteController extends Controller
         return view('website.home',compact('product','reply','comment'));
     }
 
+
+
+    
+
+    public function searchProduct(Request $request)
+    {
+        $comment=Comment::orderby('id','desc')->get();
+        $reply=Reply::all();
+
+        $search_text=$request->search;
+        $product=Product::where('name','LIKE',"%search_text%")->paginate(6);
+        return view('website.all_product',compact('product','reply','comment'));
+    }
+    
+    
     
 }

@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Product;
+use App\Models\Comment;
+use App\Models\Reply;
 
 class CartController extends Controller
 {
@@ -17,6 +19,9 @@ class CartController extends Controller
             $user=Auth::user();
             $product=Product::find($id);
             // dd($product);
+
+        
+
             $cart=new Cart;
 
             $cart->name=$user->name;
@@ -75,6 +80,16 @@ class CartController extends Controller
         $cart->delete();
         return redirect()->back();
 
+    }
+
+
+
+    public function product()
+    {
+        $product=Product::paginate(6);
+        $comment=Comment::orderby('id','desc')->get();
+        $reply=Reply::all();
+        return view('website.all_product', compact('product','comment','reply'));
     }
 
 }
